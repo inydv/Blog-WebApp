@@ -23,10 +23,12 @@ mongoose
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
+const CategoryRoute = require("./routes/categories");
 
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
 app.use("/api/posts", postRoute);
+app.use("/api/categories", CategoryRoute);
 
 // LISTEN
 app.listen("5000", () => {
