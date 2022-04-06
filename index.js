@@ -1,9 +1,14 @@
+// EXPRESS
 const express = require("express");
 const app = express();
 
+app.use(express.json());
+
+// DOTENV
 const dotenv = require("dotenv");
 dotenv.config();
 
+// MONGOOSE
 const mongoose = require("mongoose");
 mongoose
   .connect(process.env.MONGO_URL, {
@@ -14,6 +19,12 @@ mongoose
   .then(console.log("connected to mongoDB"))
   .catch((err) => console.log(err));
 
+// LOCAL FILES
+const authRoute = require("./routes/auth");
+
+app.use("/api/auth", authRoute);
+
+// LISTEN
 app.listen("5000", () => {
   console.log("BACKEND IS RUNNING");
 });
