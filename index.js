@@ -22,9 +22,11 @@ mongoose
 // LOCAL FILES
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
+const postRoute = require("./routes/posts");
 
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
+app.use("/api/posts", postRoute);
 
 // LISTEN
 app.listen("5000", () => {
