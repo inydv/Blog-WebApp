@@ -19,6 +19,10 @@ mongoose
   .then(console.log("connected to mongoDB"))
   .catch((err) => console.log(err));
 
+// PATH
+const path = require("path");
+app.use("/images", express.static(path.join(__dirname, "/images")));
+
 // MULTER
 const multer = require("multer");
 const storage = multer.diskStorage({
@@ -26,7 +30,7 @@ const storage = multer.diskStorage({
     cb(null, "images");
   },
   filename: (req, file, cb) => {
-    cb(null, "hello.jpeg");
+    cb(null, req.body.name);
   },
 });
 

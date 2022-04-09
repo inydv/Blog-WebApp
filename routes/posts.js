@@ -54,7 +54,17 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-// GET POST
+// Get POST
+router.get("/:id", async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    return res.status(200).json(post);
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+});
+
+// GET ALL POST
 router.get("/", async (req, res) => {
   const username = req.query.user;
   const catName = req.query.cat;
