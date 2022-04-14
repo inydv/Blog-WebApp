@@ -14,7 +14,7 @@ router.put("/:id", async (req, res) => {
       const updatedUser = await User.findByIdAndUpdate(
         req.params.id,
         {
-          $set: res.bady,
+          $set: req.body,
         },
         { new: true }
       ); // new true means, updated User show new result, not old one
