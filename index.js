@@ -20,25 +20,27 @@ mongoose
   .then(console.log("connected to mongoDB"))
   .catch((err) => console.log(err));
 
-// PATH
-const path = require("path");
-app.use("/images", express.static(path.join(__dirname, "/images")));
+// For storing images Locally
 
-// MULTER
-const multer = require("multer");
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "images");
-  },
-  filename: (req, file, cb) => {
-    cb(null, req.body.name);
-  },
-});
+// // PATH
+// const path = require("path");
+// app.use("/images", express.static(path.join(__dirname, "/images")));
 
-const upload = multer({ storage: storage });
-app.post("/api/upload", upload.single("file"), (req, res) => {
-  return res.status(200).json("File has been uploaded");
-});
+// // MULTER
+// const multer = require("multer");
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, "images");
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, req.body.name);
+//   },
+// });
+
+// const upload = multer({ storage: storage });
+// app.post("/api/upload", upload.single("file"), (req, res) => {
+//   return res.status(200).json("File has been uploaded");
+// });
 
 // LOCAL FILES
 const authRoute = require("./routes/auth");
